@@ -1,0 +1,12 @@
+{
+    "name": "semaphore",
+    "version": "1.0.0",
+    "description": "semaphore for node",
+    "engine": "node >= 0.6.0",
+    "dependencies": {
+    },
+	"devDependencies": {
+        "mocha": "1.0.x",
+        "should": "0.6.x"
+	}
+}
