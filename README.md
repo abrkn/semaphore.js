@@ -4,24 +4,20 @@ semaphore.js
 Limit simultaneous access to a resource.
 
 ```javascript
-// Create semaphore
+// Create
 var sem = require('semaphore')(capacity);
 
-// Take semaphore
-sem.take(function[, number])
-sem.take(number, function)
+// Take
+sem.take(fn[, n=1])
+sem.take(n, fn)
 
-// Leave semaphore
-sem.leave([number])
+// Leave
+sem.leave([n])
 ```
 
 
 ```javascript
-// Prevent database from dying by only allowing 1 request at a time
-var cat = {
-
-};
-
+// Limit concurrent db access
 var sem = require('semaphore')(1);
 var server = require('http').createServer(req, res) {
 	sem.take(function() {
@@ -37,13 +33,26 @@ var server = require('http').createServer(req, res) {
 ```
 
 ```javascript
-// Only serve 2 clients at a time.
+// 2 clients at a time
 var sem = require('semaphore')(2);
 var server = require('http').createServer(req, res) {
 	res.write("Then good day, madam!");
 
 	sem.take(function() {
 		res.end("We hope to see you soon for tea.");
+		sem.leave();
+	});
+});
+```
+
+```javascript
+// Rate limit
+var sem = require('semaphore')(10);
+var server = require('http').createServer(req, res) {
+	sem.take(function() {
+		res.end(".");
+		
+		setTimeout(sem.leave, 500)
 	});
 });
 ```
