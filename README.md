@@ -1,6 +1,9 @@
 semaphore.js
 ============
 
+Install:
+npm install semaphore
+
 Limit simultaneous access to a resource.
 
 ```javascript

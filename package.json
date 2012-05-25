@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "description": "semaphore for node",
     "engine": "node >= 0.6.0",
+      "main": "./lib/semaphore.js",
     "dependencies": {
     },
 	"devDependencies": {
         "mocha": "1.0.x",
         "should": "0.6.x"
-	}
+	},
+    "homepage": "https://github.com/abrkn/semaphore.js"
 }
