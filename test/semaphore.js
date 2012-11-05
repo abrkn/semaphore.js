@@ -100,7 +100,7 @@ it('should not let past more than capacity', function(done) {
 
 	s.take(function() { values.push(1); setTimeout(function() { s.leave(); }, speed * 1); });
 	s.take(function() { values.push(2); setTimeout(function() { s.leave(); }, speed * 2); });
-	s.take(function() { values.push(3); setTimeout(function() { s.leave(); }, speed * 3); });
+	s.take(function(leave) { values.push(3); setTimeout(function() { leave(); }, speed * 3); });
 	s.take(function() { values.push(4); });
 	s.take(function() { values.push(5); });
 
@@ -154,9 +154,9 @@ describe("should respect number", function() {
 	it(function(done) {
 		var s = semaphore(10); // 10
 
-		s.take(5, function() { // 5
+		s.take(5, function(leave) { // 5
 			s.take(4, function() { // 1
-				s.leave(4); // 5
+				leave(4); // 5
 
 				s.take(5, done); // 0
 			});
