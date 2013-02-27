@@ -59,3 +59,8 @@ var server = require('http').createServer(req, res) {
 	});
 });
 ```
+
+License
+===
+
+MIT
