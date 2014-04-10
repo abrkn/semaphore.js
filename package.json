@@ -1,7 +1,7 @@
 {
-    "name": "semaphore",
-    "version": "1.0.1",
-    "description": "semaphore for node",
+    "name": "semaphore_with_arguments",
+    "version": "1.0.4",
+    "description": "semaphore.js with some more featues",
     "engine": "node >= 0.6.0",
       "main": "./lib/semaphore.js",
     "dependencies": {
@@ -10,5 +10,10 @@
         "mocha": "1.0.x",
         "should": "0.6.x"
 	},
-    "homepage": "https://github.com/abrkn/semaphore.js"
+	"repository" :
+	{ 
+		"type" :	"git",
+		"url" :		"git@github.com:thnew/semaphore.js.git"
+	},
+    "homepage": "https://github.com/thnew/semaphore.js"
 }

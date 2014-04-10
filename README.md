@@ -1,4 +1,4 @@
-semaphore.js
+semaphore_with_arguments.js
 ============
 
 Install:
