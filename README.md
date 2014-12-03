@@ -1,4 +1,4 @@
-semaphore.js
+semaphore_with_arguments.js
 ============
 
 Install:
@@ -54,6 +54,22 @@ var sem = require('semaphore')(10);
 var server = require('http').createServer(req, res) {
 	sem.take(function() {
 		res.end(".");
+		
+		setTimeout(sem.leave, 500)
+	});
+});
+```
+
+```javascript
+// Pass arguments
+var sem = require('semaphore')(10);
+var server = require('http').createServer(req, res) {
+	var passMe = "String to pass";
+	
+	sem.take({ aFabulousString: passMe }, function(args) {
+		res.end(".");
+		
+		console.log(args.aFabulousString); // will ouput "String to pass"
 		
 		setTimeout(sem.leave, 500)
 	});
