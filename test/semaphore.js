@@ -141,7 +141,7 @@ it('should not let past more than capacity', function(done) {
 });
 
 describe("should respect number", function() {
-	it(function(done) {
+	it("should fail when taking more than the capacity allows", function(done) {
 		var s = semaphore(1);
 
 		s.take(2, function() {
@@ -151,14 +151,16 @@ describe("should respect number", function() {
 		process.nextTick(done);
 	});
 
-	it(function(done) {
+	it("should work fine with correct input values", function(done) {
 		var s = semaphore(10); // 10
 
 		s.take(5, function(leave) { // 5
 			s.take(4, function() { // 1
 				leave(4); // 5
 
-				s.take(5, done); // 0
+				s.take(5, function() {
+					return done()
+				}); // 0
 			});
 		});
 	});
