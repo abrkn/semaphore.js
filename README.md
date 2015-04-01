@@ -1,6 +1,8 @@
 semaphore.js
 ============
 
+[![Build Status](https://travis-ci.org/abrkn/semaphore.js.svg?branch=master)](https://travis-ci.org/abrkn/semaphore.js)
+
 Install:
 npm install semaphore
 
