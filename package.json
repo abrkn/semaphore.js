@@ -6,8 +6,8 @@
   "main": "./lib/semaphore.js",
   "dependencies": {},
   "devDependencies": {
-    "mocha": "2.2.x",
-    "should": "6.0.x"
+    "mocha": "2.x.x",
+    "should": "8.x.x"
   },
   "homepage": "https://github.com/abrkn/semaphore.js",
   "repository": {
