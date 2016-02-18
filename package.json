@@ -2,7 +2,9 @@
   "name": "semaphore",
   "version": "1.0.4",
   "description": "semaphore for node",
-  "engine": "node >= 0.8.0",
+  "engines": {
+    "node": ">=0.8.0"
+  },
   "main": "./lib/semaphore.js",
   "dependencies": {},
   "devDependencies": {
