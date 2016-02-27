@@ -1,6 +1,6 @@
 {
   "name": "semaphore",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "semaphore for node",
   "engines": {
     "node": ">=0.8.0"
