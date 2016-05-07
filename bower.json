@@ -1,26 +1,29 @@
 {
   "name": "semaphore.js",
-  "version": "1.0.3",
-  "homepage": "https://github.com/abrkn/semaphore.js",
-  "authors": [
-    "Andreas Brekken <andreas@opuno.com>"
-  ],
   "description": "Limit simultaneous access to a resource.",
-  "main": "lib/semaphore.js",
+  "main": "./index.js",
   "moduleType": [
     "globals",
+    "amd",
     "node"
-  ],
-  "keywords": [
-    "semaphore",
-    "concurrency"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
-  ]
+    "test"
+  ],
+  "keywords": [
+    "concurrency",
+    "semaphore"
+  ],
+  "authors": [
+    "Andreas Brekken <andreas@opuno.com>"
+  ],
+  "homepage": "https://github.com/abrkn/semaphore.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abrkn/semaphore.js.git"
+  }
 }
