@@ -1,16 +1,25 @@
-semaphore.js
-============
+# semaphore
 
-[![Build Status](https://travis-ci.org/abrkn/semaphore.js.svg?branch=master)](https://travis-ci.org/abrkn/semaphore.js)
+[![NPM Package](https://img.shields.io/npm/v/semaphore.svg?style=flat-square)](https://www.npmjs.org/package/semaphore)
+[![Build Status](https://img.shields.io/travis/abrkn/semaphore.js.svg?branch=master&style=flat-square)](https://travis-ci.org/abrkn/semaphore.js)
 
-Install:
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
+
+## Installation
+
+```
 npm install semaphore
+```
+
+## Examples
 
 Limit simultaneous access to a resource.
 
 ```javascript
 // Create
-var sem = require('semaphore')(capacity);
+const Semaphore = require('semaphore')
+const sem = new Semaphore(capacity)
 
 // Take
 sem.take(fn[, n=1])
@@ -20,49 +29,46 @@ sem.take(n, fn)
 sem.leave([n])
 ```
 
-
 ```javascript
 // Limit concurrent db access
-var sem = require('semaphore')(1);
-var server = require('http').createServer(req, res) {
-	sem.take(function() {
-		expensive_database_operation(function(err, res) {
-			sem.leave();
-
-			if (err) return res.end("Error");
-
-			return res.end(res);
-		});
-	});
-});
+const Semaphore = require('semaphore')
+const sem = new Semaphore(1)
+const server = require('http').createServer((req, res) => {
+  sem.take(() => {
+    expensive_database_operation((err, res) => {
+      sem.leave()
+      res.end(err === null ? res : 'error')
+    })
+  })
+})
 ```
 
 ```javascript
 // 2 clients at a time
-var sem = require('semaphore')(2);
-var server = require('http').createServer(req, res) {
-	res.write("Then good day, madam!");
+const Semaphore = require('semaphore')
+const sem = new Semaphore(2)
+const server = require('http').createServer((req, res) => {
+  res.write("Then good day, madam!")
 
-	sem.take(function() {
-		res.end("We hope to see you soon for tea.");
-		sem.leave();
-	});
-});
+  sem.take(() => {
+    res.end("We hope to see you soon for tea.")
+    sem.leave()
+  })
+})
 ```
 
 ```javascript
 // Rate limit
-var sem = require('semaphore')(10);
-var server = require('http').createServer(req, res) {
-	sem.take(function() {
-		res.end(".");
-		
-		setTimeout(sem.leave, 500)
-	});
-});
+const Semaphore = require('semaphore')
+const sem = new Semaphore(10)
+const server = require('http').createServer((req, res) => {
+  sem.take(() => {
+    res.end(".")
+    setTimeout(() => sem.leave(), 500)
+  })
+})
 ```
 
-License
-===
+## License
 
 MIT
