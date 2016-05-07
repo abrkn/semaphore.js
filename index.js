@@ -1,4 +1,4 @@
-;(function(global) {
+;(function (global) {
   'use strict'
 
   var nextTick = function (fn) { setTimeout(fn, 0) }

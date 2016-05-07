@@ -26,5 +26,10 @@
     "nyc": "^6.4.3",
     "standard": "^7.0.1",
     "tape": "^4.5.1"
+  },
+  "standard": {
+    "globals": [
+      "define"
+    ]
   }
 }
