@@ -18,6 +18,9 @@ sem.take(n, fn)
 
 // Leave
 sem.leave([n])
+
+// Available
+sem.available([n])
 ```
 
 
