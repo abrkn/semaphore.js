@@ -27,7 +27,7 @@ sem.available([n])
 ```javascript
 // Limit concurrent db access
 var sem = require('semaphore')(1);
-var server = require('http').createServer(req, res) {
+var server = require('http').createServer(function(req, res) {
 	sem.take(function() {
 		expensive_database_operation(function(err, res) {
 			sem.leave();
@@ -43,7 +43,7 @@ var server = require('http').createServer(req, res) {
 ```javascript
 // 2 clients at a time
 var sem = require('semaphore')(2);
-var server = require('http').createServer(req, res) {
+var server = require('http').createServer(function(req, res) {
 	res.write("Then good day, madam!");
 
 	sem.take(function() {
@@ -56,7 +56,7 @@ var server = require('http').createServer(req, res) {
 ```javascript
 // Rate limit
 var sem = require('semaphore')(10);
-var server = require('http').createServer(req, res) {
+var server = require('http').createServer(function(req, res) {
 	sem.take(function() {
 		res.end(".");
 		
