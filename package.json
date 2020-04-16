@@ -11,6 +11,7 @@
     "mocha": "2.x.x",
     "should": "8.x.x"
   },
+  "license": "MIT",
   "homepage": "https://github.com/abrkn/semaphore.js",
   "repository": {
     "type": "git",
